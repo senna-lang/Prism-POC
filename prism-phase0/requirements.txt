@@ -1,0 +1,22 @@
+# Prism Phase 0 - POC Dependencies
+
+# Tree-sitter core
+tree-sitter==0.23.2
+
+# Language grammars
+tree-sitter-python==0.23.6
+tree-sitter-typescript==0.23.2
+
+# Token counting (tiktoken cl100k_base)
+tiktoken==0.8.0
+
+# SQLite is bundled with Python std-lib (no extra package needed)
+
+# CLI utility
+click==8.1.8
+
+# Rich terminal output (benchmark report)
+rich==13.9.4
+
+# Type hints backport
+typing-extensions==4.12.2

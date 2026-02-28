@@ -2,11 +2,12 @@
 id: t-e9355f
 date: 2026-02-28T22:44:10.667652+09:00
 title: 'Phase 0: indexer.py 実装（tree-sitter + SQLite FTS5 + import解析）'
-status: open
+status: done
 priority: high
 session: ""
 tags: []
 assignee: ""
+completed_at: 2026-02-28T23:02:44.156392+09:00
 ---
 
 ## What

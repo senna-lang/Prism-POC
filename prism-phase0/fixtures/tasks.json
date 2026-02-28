@@ -1,0 +1,185 @@
+{
+  "version": "1.0",
+  "description": "Prism Phase 0 benchmark task definitions (Tasks A–D)",
+  "tasks": {
+    "A_symbol_lookup": {
+      "id": "A",
+      "name": "名前既知のシンボル特定",
+      "description": "問い: 'handleLogin はどこで定義されているか、シグネチャを確認したい'",
+      "symbols": ["handleLogin", "validate_token", "AuthService"],
+      "prism_ops": [
+        { "tool": "explore", "args": { "query": "handleLogin" } }
+      ],
+      "baseline_ops": {
+        "BL-A": [
+          { "tool": "rg", "args": { "query": "handleLogin" } }
+        ],
+        "BL-B": [
+          { "tool": "serena", "args": { "symbol_name": "handleLogin" } }
+        ],
+        "BL-C": [
+          { "tool": "cocoindex", "args": { "symbol_name": "handleLogin" } }
+        ]
+      },
+      "metrics": ["latency_ms", "token_count"],
+      "hypothesis": ["H1", "H2"]
+    },
+    "B_impact_analysis": {
+      "id": "B",
+      "name": "影響範囲の調査（参照グラフの真価）",
+      "description": "問い: 'validateToken を変更したとき、何が壊れる可能性があるか調べたい'",
+      "symbols": ["validateToken", "validate_token"],
+      "prism_ops": [
+        {
+          "tool": "trace",
+          "args": { "name": "validateToken", "direction": "callers", "depth": 1 }
+        }
+      ],
+      "baseline_ops": {
+        "BL-A": [
+          { "tool": "rg", "args": { "query": "validateToken" } },
+          {
+            "note": "Each match requires a follow-up read_file to confirm context",
+            "tool": "read_file_per_match",
+            "args": {}
+          }
+        ]
+      },
+      "metrics": ["tool_calls", "latency_ms", "token_count"],
+      "hypothesis": ["H1", "H4"],
+      "go_criteria": {
+        "H1": "prism_tool_calls <= baseline_tool_calls * 0.5",
+        "H4": "prism_tool_calls == 1"
+      }
+    },
+    "C_concept_search": {
+      "id": "C",
+      "name": "名前不明の概念検索（FTS5の真価）",
+      "description": "問い: '認証エラーのハンドリングをしている関数を探したい（関数名不明）'",
+      "queries": [
+        "auth error handling",
+        "authentication error",
+        "login failure"
+      ],
+      "prism_ops": [
+        {
+          "tool": "explore",
+          "args": { "query": "auth error handling", "kind": "function" }
+        }
+      ],
+      "baseline_ops": {
+        "BL-A": [
+          { "tool": "rg", "args": { "query": "auth.*error" } },
+          {
+            "note": "Multiple read_file calls needed to understand context",
+            "tool": "read_file_per_match",
+            "args": {}
+          }
+        ]
+      },
+      "metrics": ["tool_calls", "latency_ms", "token_count"],
+      "hypothesis": ["H1", "H3"],
+      "go_criteria": {
+        "H1": "prism_tool_calls <= baseline_tool_calls * 0.5"
+      }
+    },
+    "D_token_comparison": {
+      "id": "D",
+      "name": "返却トークン量の純粋比較",
+      "description": "同一シンボルに対して各方式の返却トークン数を計測する（tiktoken cl100k_base）",
+      "symbol_sizes": {
+        "small": {
+          "label": "短い関数（〜20行）",
+          "symbols": ["handleLogin", "get_user", "formatDate"],
+          "expected": {
+            "prism_tokens": 80,
+            "serena_tokens": 200,
+            "cocoindex_tokens": 400,
+            "reduction_vs_serena_pct": 60
+          }
+        },
+        "medium": {
+          "label": "中程度の関数（〜50行）",
+          "symbols": ["validateToken", "processRequest", "authenticate"],
+          "expected": {
+            "prism_tokens": 100,
+            "serena_tokens": 550,
+            "cocoindex_tokens": 450,
+            "reduction_vs_serena_pct": 82
+          }
+        },
+        "large": {
+          "label": "大きなクラス（〜200行）",
+          "symbols": ["AuthService", "UserController", "RequestHandler"],
+          "expected": {
+            "prism_tokens": 150,
+            "serena_tokens": 2200,
+            "cocoindex_tokens": 450,
+            "reduction_vs_serena_pct": 93
+          }
+        }
+      },
+      "metrics": ["token_count"],
+      "hypothesis": ["H2"],
+      "go_criteria": {
+        "H2": "token_reduction_rate >= 0.70"
+      }
+    }
+  },
+  "hypotheses": {
+    "H1": {
+      "label": "tool call 削減",
+      "description": "Prism は grep/read_file の繰り返しより少ない操作回数でシンボルを特定できる",
+      "go_criteria": "タスク B・C で tool call 回数が 50% 以上削減される",
+      "no_go_threshold": "削減が 20% 未満",
+      "no_go_action": "タスク設計の見直し"
+    },
+    "H2": {
+      "label": "トークン効率",
+      "description": "「座標のみ」返却は Serena/cocoindex 方式より大幅にトークンを節約できる",
+      "go_criteria": "同等情報量で Serena 比 70% 以上削減",
+      "no_go_threshold": "削減が 50% 未満",
+      "no_go_action": "返却スキーマの見直し"
+    },
+    "H3": {
+      "label": "検索速度優位",
+      "description": "インデックス構築後の検索は中規模以上で grep より高速",
+      "go_criteria": "5 万行超で grep 比レイテンシ 1/3 以下",
+      "no_go_threshold": "grep より遅い",
+      "no_go_action": "FTS5 最適化 or Rust 移行判断"
+    },
+    "H4": {
+      "label": "参照グラフの有効性",
+      "description": "trace 機能が影響調査を 1 操作で完結させられる",
+      "go_criteria": "タスク B で Baseline 比操作回数 1/3 以下",
+      "no_go_threshold": "実現困難なケースが多数",
+      "no_go_action": "references スキーマ・import 解析ロジックを見直し再計測"
+    }
+  },
+  "corpora": [
+    {
+      "id": "sample",
+      "name": "自前サンプル",
+      "path": "corpora/sample",
+      "lines_approx": 500,
+      "languages": ["python", "typescript"],
+      "description": "タスク A〜D の期待値を完全制御できる自前サンプル"
+    },
+    {
+      "id": "fastapi",
+      "name": "fastapi（一部）",
+      "path": "corpora/fastapi",
+      "lines_approx": 20000,
+      "languages": ["python"],
+      "description": "小規模。関数・クラス定義が豊富"
+    },
+    {
+      "id": "express",
+      "name": "express（一部）",
+      "path": "corpora/express",
+      "lines_approx": 50000,
+      "languages": ["typescript"],
+      "description": "中規模。参照グラフが複雑"
+    }
+  ]
+}

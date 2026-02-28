@@ -2,11 +2,12 @@
 id: t-d52f1a
 date: 2026-02-28T22:44:45.570297+09:00
 title: 'Phase 0: benchmark.py + report.py 実装（計測ハーネス + 結果出力）'
-status: open
+status: done
 priority: high
 session: ""
 tags: []
 assignee: ""
+completed_at: 2026-02-28T23:02:48.001036+09:00
 ---
 
 ## What

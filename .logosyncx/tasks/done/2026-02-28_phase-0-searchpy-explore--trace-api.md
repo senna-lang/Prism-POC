@@ -2,11 +2,12 @@
 id: t-405c83
 date: 2026-02-28T22:44:18.580096+09:00
 title: 'Phase 0: search.py 実装（explore + trace API）'
-status: open
+status: done
 priority: high
 session: ""
 tags: []
 assignee: ""
+completed_at: 2026-02-28T23:02:47.965768+09:00
 ---
 
 ## What

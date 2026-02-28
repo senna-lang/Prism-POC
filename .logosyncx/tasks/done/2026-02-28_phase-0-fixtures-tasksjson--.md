@@ -2,11 +2,12 @@
 id: t-d68275
 date: 2026-02-28T22:44:36.540048+09:00
 title: 'Phase 0: fixtures 整備（tasks.json + ベンチマーク用コーパス）'
-status: open
+status: done
 priority: medium
 session: ""
 tags: []
 assignee: ""
+completed_at: 2026-02-28T23:02:47.989453+09:00
 ---
 
 ## What

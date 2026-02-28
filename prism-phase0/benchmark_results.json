@@ -1,0 +1,528 @@
+{
+  "timestamp": "2026-02-28T13:57:10.340225+00:00",
+  "corpora": [
+    {
+      "id": "sample",
+      "name": "自前サンプル",
+      "path": "fixtures/corpora/sample",
+      "files": 2,
+      "lines": 1070,
+      "symbols": 61
+    }
+  ],
+  "index_build_time_ms": {
+    "sample": 10.4
+  },
+  "tasks": [
+    {
+      "task_id": "A_symbol_lookup",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 0.693,
+        "token_count": 1423,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_grep": {
+        "latency_ms": 14.183,
+        "token_count": 106,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 5.332,
+        "token_count": 538,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 5.045,
+        "token_count": 923,
+        "tool_calls": 1,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": -1.645,
+      "tool_call_reduction_rate": 0.0
+    },
+    {
+      "task_id": "A_symbol_lookup",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 0.907,
+        "token_count": 1023,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_grep": {
+        "latency_ms": 12.165,
+        "token_count": 0,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 4.817,
+        "token_count": 0,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 4.645,
+        "token_count": 0,
+        "tool_calls": 1,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": 0.0,
+      "tool_call_reduction_rate": 0.0
+    },
+    {
+      "task_id": "A_symbol_lookup",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 0.807,
+        "token_count": 1069,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_grep": {
+        "latency_ms": 11.822,
+        "token_count": 55,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 5.533,
+        "token_count": 977,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 5.305,
+        "token_count": 1146,
+        "tool_calls": 1,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": -0.0942,
+      "tool_call_reduction_rate": 0.0
+    },
+    {
+      "task_id": "B_impact_analysis",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 0.711,
+        "token_count": 398,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_grep": {
+        "latency_ms": 25.748,
+        "token_count": 700,
+        "tool_calls": 3,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": 0.0,
+      "tool_call_reduction_rate": 0.6667
+    },
+    {
+      "task_id": "B_impact_analysis",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 0.645,
+        "token_count": 0,
+        "tool_calls": 1,
+        "error": "Symbol not found: name='validate_token'"
+      },
+      "bl_grep": {
+        "latency_ms": 14.207,
+        "token_count": 0,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": 0.0,
+      "tool_call_reduction_rate": 0.0
+    },
+    {
+      "task_id": "C_concept_search",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 0.954,
+        "token_count": 125,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_grep": {
+        "latency_ms": 18.428,
+        "token_count": 6753,
+        "tool_calls": 3,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": 0.0,
+      "tool_call_reduction_rate": 0.6667
+    },
+    {
+      "task_id": "C_concept_search",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 0.887,
+        "token_count": 304,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_grep": {
+        "latency_ms": 16.639,
+        "token_count": 6783,
+        "tool_calls": 3,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": 0.0,
+      "tool_call_reduction_rate": 0.6667
+    },
+    {
+      "task_id": "C_concept_search",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 0.801,
+        "token_count": 188,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_grep": {
+        "latency_ms": 10.338,
+        "token_count": 0,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": 0.0,
+      "tool_call_reduction_rate": 0.0
+    },
+    {
+      "task_id": "D_token_comparison_small",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 0.78,
+        "token_count": 92,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_grep": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 5.327,
+        "token_count": 538,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 5.202,
+        "token_count": 923,
+        "tool_calls": 1,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": 0.829,
+      "tool_call_reduction_rate": 0.0
+    },
+    {
+      "task_id": "D_token_comparison_small",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 0.594,
+        "token_count": 124,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_grep": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 4.737,
+        "token_count": 102,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 4.911,
+        "token_count": 474,
+        "tool_calls": 1,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": -0.2157,
+      "tool_call_reduction_rate": 0.0
+    },
+    {
+      "task_id": "D_token_comparison_small",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 0.524,
+        "token_count": 78,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_grep": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 4.774,
+        "token_count": 16,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 4.846,
+        "token_count": 424,
+        "tool_calls": 1,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": -3.875,
+      "tool_call_reduction_rate": 0.0
+    },
+    {
+      "task_id": "D_token_comparison_medium",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 0.596,
+        "token_count": 80,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_grep": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 4.987,
+        "token_count": 208,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 4.931,
+        "token_count": 593,
+        "tool_calls": 1,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": 0.6154,
+      "tool_call_reduction_rate": 0.0
+    },
+    {
+      "task_id": "D_token_comparison_medium",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 0.505,
+        "token_count": 1,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_grep": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 4.685,
+        "token_count": 0,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 4.623,
+        "token_count": 0,
+        "tool_calls": 1,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": 0.0,
+      "tool_call_reduction_rate": 0.0
+    },
+    {
+      "task_id": "D_token_comparison_medium",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 1.099,
+        "token_count": 110,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_grep": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 5.293,
+        "token_count": 0,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 5.16,
+        "token_count": 0,
+        "tool_calls": 1,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": 0.0,
+      "tool_call_reduction_rate": 0.0
+    },
+    {
+      "task_id": "D_token_comparison_large",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 0.883,
+        "token_count": 148,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_grep": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 5.747,
+        "token_count": 977,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 5.616,
+        "token_count": 1146,
+        "tool_calls": 1,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": 0.8485,
+      "tool_call_reduction_rate": 0.0
+    },
+    {
+      "task_id": "D_token_comparison_large",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 0.667,
+        "token_count": 1,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_grep": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 5.086,
+        "token_count": 0,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 4.862,
+        "token_count": 0,
+        "tool_calls": 1,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": 0.0,
+      "tool_call_reduction_rate": 0.0
+    },
+    {
+      "task_id": "D_token_comparison_large",
+      "corpus_id": "sample",
+      "prism": {
+        "latency_ms": 0.641,
+        "token_count": 1,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_grep": {
+        "latency_ms": 0.0,
+        "token_count": 0,
+        "tool_calls": 0,
+        "error": null
+      },
+      "bl_serena": {
+        "latency_ms": 4.645,
+        "token_count": 0,
+        "tool_calls": 1,
+        "error": null
+      },
+      "bl_cocoindex": {
+        "latency_ms": 4.533,
+        "token_count": 0,
+        "tool_calls": 1,
+        "error": null
+      },
+      "token_reduction_rate_vs_serena": 0.0,
+      "tool_call_reduction_rate": 0.0
+    }
+  ]
+}

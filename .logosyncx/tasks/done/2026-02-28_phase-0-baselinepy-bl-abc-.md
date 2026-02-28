@@ -2,11 +2,12 @@
 id: t-59bd69
 date: 2026-02-28T22:44:27.051818+09:00
 title: 'Phase 0: baseline.py 実装（BL-A/B/C シミュレーター）'
-status: open
+status: done
 priority: high
 session: ""
 tags: []
 assignee: ""
+completed_at: 2026-02-28T23:02:47.978174+09:00
 ---
 
 ## What
