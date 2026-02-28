@@ -1,0 +1,85 @@
+{
+	"version": "1",
+	"project": "Prism-POC",
+	"agents_file": "AGENTS.md",
+	"sessions": {
+		"summary_sections": [
+			"Summary",
+			"Key Decisions"
+		],
+		"excerpt_section": "Summary",
+		"sections": [
+			{
+				"name": "Summary",
+				"level": 2,
+				"required": true
+			},
+			{
+				"name": "Key Decisions",
+				"level": 2,
+				"required": true
+			},
+			{
+				"name": "Context Used",
+				"level": 2,
+				"required": true
+			},
+			{
+				"name": "Notes",
+				"level": 2,
+				"required": false
+			},
+			{
+				"name": "Raw Conversation",
+				"level": 2,
+				"required": false
+			}
+		]
+	},
+	"tasks": {
+		"default_status": "open",
+		"default_priority": "medium",
+		"summary_sections": [
+			"What",
+			"Checklist"
+		],
+		"excerpt_section": "What",
+		"sections": [
+			{
+				"name": "What",
+				"level": 2,
+				"required": true
+			},
+			{
+				"name": "Why",
+				"level": 2,
+				"required": true
+			},
+			{
+				"name": "Scope",
+				"level": 2,
+				"required": true
+			},
+			{
+				"name": "Checklist",
+				"level": 2,
+				"required": true
+			},
+			{
+				"name": "Notes",
+				"level": 2,
+				"required": false
+			}
+		]
+	},
+	"privacy": {
+		"filter_patterns": []
+	},
+	"git": {
+		"auto_push": true
+	},
+	"gc": {
+		"linked_task_done_days": 30,
+		"orphan_session_days": 90
+	}
+}
