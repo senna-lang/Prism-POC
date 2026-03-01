@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-01T03:50:06.742641+00:00",
+  "timestamp": "2026-03-01T03:56:04.656091+00:00",
   "corpora": [
     {
       "id": "sample",
@@ -7,37 +7,37 @@
       "path": "/Users/senna/Documents/Repos/Prism-POC/prism-phase0/fixtures/corpora/sample",
       "files": 2,
       "lines": 1070,
-      "symbols": 61
+      "symbols": 0
     }
   ],
   "index_build_time_ms": {
-    "sample": 13.0
+    "sample": 1.4
   },
   "tasks": [
     {
       "task_id": "A_symbol_lookup",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 0.66,
+        "latency_ms": 0.627,
         "token_count": 1508,
         "tool_calls": 1,
         "error": null
       },
       "bl_grep": {
-        "latency_ms": 26.367,
+        "latency_ms": 12.631,
         "token_count": 106,
         "tool_calls": 1,
         "error": null
       },
       "bl_serena": {
-        "latency_ms": 1309.682,
+        "latency_ms": 1337.288,
         "token_count": 538,
         "tool_calls": 1,
         "error": null
       },
       "bl_cocoindex": {
-        "latency_ms": 6345.646,
-        "token_count": 893,
+        "latency_ms": 6481.587,
+        "token_count": 124,
         "tool_calls": 1,
         "error": null
       },
@@ -48,26 +48,26 @@
       "task_id": "A_symbol_lookup",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 1.171,
+        "latency_ms": 1.455,
         "token_count": 1057,
         "tool_calls": 1,
         "error": null
       },
       "bl_grep": {
-        "latency_ms": 14.495,
+        "latency_ms": 16.241,
         "token_count": 0,
         "tool_calls": 1,
         "error": null
       },
       "bl_serena": {
-        "latency_ms": 1333.165,
+        "latency_ms": 1394.484,
         "token_count": 0,
         "tool_calls": 1,
         "error": null
       },
       "bl_cocoindex": {
-        "latency_ms": 473.531,
-        "token_count": 562,
+        "latency_ms": 100.797,
+        "token_count": 78,
         "tool_calls": 1,
         "error": null
       },
@@ -78,26 +78,26 @@
       "task_id": "A_symbol_lookup",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 0.95,
+        "latency_ms": 1.065,
         "token_count": 1103,
         "tool_calls": 1,
         "error": null
       },
       "bl_grep": {
-        "latency_ms": 12.686,
+        "latency_ms": 14.265,
         "token_count": 55,
         "tool_calls": 1,
         "error": null
       },
       "bl_serena": {
-        "latency_ms": 1251.042,
+        "latency_ms": 1296.7,
         "token_count": 977,
         "tool_calls": 1,
         "error": null
       },
       "bl_cocoindex": {
-        "latency_ms": 88.89,
-        "token_count": 836,
+        "latency_ms": 87.167,
+        "token_count": 116,
         "tool_calls": 1,
         "error": null
       },
@@ -108,13 +108,13 @@
       "task_id": "B_impact_analysis",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 0.856,
+        "latency_ms": 1.275,
         "token_count": 206,
         "tool_calls": 1,
         "error": null
       },
       "bl_grep": {
-        "latency_ms": 2525.183,
+        "latency_ms": 2586.345,
         "token_count": 700,
         "tool_calls": 3,
         "error": null
@@ -138,13 +138,13 @@
       "task_id": "B_impact_analysis",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 0.889,
+        "latency_ms": 0.819,
         "token_count": 0,
         "tool_calls": 1,
         "error": "Symbol not found: name='validate_token'"
       },
       "bl_grep": {
-        "latency_ms": 14.603,
+        "latency_ms": 13.786,
         "token_count": 0,
         "tool_calls": 1,
         "error": null
@@ -168,13 +168,13 @@
       "task_id": "C_concept_search",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 1.081,
+        "latency_ms": 1.047,
         "token_count": 142,
         "tool_calls": 1,
         "error": null
       },
       "bl_grep": {
-        "latency_ms": 17.439,
+        "latency_ms": 17.43,
         "token_count": 6753,
         "tool_calls": 3,
         "error": null
@@ -198,13 +198,13 @@
       "task_id": "C_concept_search",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 0.815,
+        "latency_ms": 1.17,
         "token_count": 338,
         "tool_calls": 1,
         "error": null
       },
       "bl_grep": {
-        "latency_ms": 17.413,
+        "latency_ms": 17.499,
         "token_count": 6783,
         "tool_calls": 3,
         "error": null
@@ -228,13 +228,13 @@
       "task_id": "C_concept_search",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 0.788,
+        "latency_ms": 0.755,
         "token_count": 205,
         "tool_calls": 1,
         "error": null
       },
       "bl_grep": {
-        "latency_ms": 13.121,
+        "latency_ms": 13.392,
         "token_count": 0,
         "tool_calls": 1,
         "error": null
@@ -258,7 +258,7 @@
       "task_id": "D_token_comparison_small",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 0.763,
+        "latency_ms": 1.139,
         "token_count": 109,
         "tool_calls": 1,
         "error": null
@@ -270,14 +270,14 @@
         "error": null
       },
       "bl_serena": {
-        "latency_ms": 1248.972,
+        "latency_ms": 1273.225,
         "token_count": 538,
         "tool_calls": 1,
         "error": null
       },
       "bl_cocoindex": {
-        "latency_ms": 61.166,
-        "token_count": 893,
+        "latency_ms": 67.839,
+        "token_count": 124,
         "tool_calls": 1,
         "error": null
       },
@@ -288,7 +288,7 @@
       "task_id": "D_token_comparison_small",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 1.154,
+        "latency_ms": 1.122,
         "token_count": 141,
         "tool_calls": 1,
         "error": null
@@ -300,14 +300,14 @@
         "error": null
       },
       "bl_serena": {
-        "latency_ms": 1350.861,
+        "latency_ms": 1268.255,
         "token_count": 102,
         "tool_calls": 1,
         "error": null
       },
       "bl_cocoindex": {
-        "latency_ms": 66.185,
-        "token_count": 701,
+        "latency_ms": 55.038,
+        "token_count": 153,
         "tool_calls": 1,
         "error": null
       },
@@ -318,7 +318,7 @@
       "task_id": "D_token_comparison_small",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 1.17,
+        "latency_ms": 1.368,
         "token_count": 95,
         "tool_calls": 1,
         "error": null
@@ -330,14 +330,14 @@
         "error": null
       },
       "bl_serena": {
-        "latency_ms": 1271.971,
+        "latency_ms": 1272.831,
         "token_count": 16,
         "tool_calls": 1,
         "error": null
       },
       "bl_cocoindex": {
-        "latency_ms": 565.744,
-        "token_count": 667,
+        "latency_ms": 92.606,
+        "token_count": 120,
         "tool_calls": 1,
         "error": null
       },
@@ -348,7 +348,7 @@
       "task_id": "D_token_comparison_medium",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 0.858,
+        "latency_ms": 1.056,
         "token_count": 97,
         "tool_calls": 1,
         "error": null
@@ -360,14 +360,14 @@
         "error": null
       },
       "bl_serena": {
-        "latency_ms": 1198.923,
+        "latency_ms": 1280.581,
         "token_count": 208,
         "tool_calls": 1,
         "error": null
       },
       "bl_cocoindex": {
-        "latency_ms": 63.745,
-        "token_count": 788,
+        "latency_ms": 57.368,
+        "token_count": 224,
         "tool_calls": 1,
         "error": null
       },
@@ -378,7 +378,7 @@
       "task_id": "D_token_comparison_medium",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 1.398,
+        "latency_ms": 0.876,
         "token_count": 1,
         "tool_calls": 1,
         "error": null
@@ -390,14 +390,14 @@
         "error": null
       },
       "bl_serena": {
-        "latency_ms": 1208.107,
+        "latency_ms": 1271.661,
         "token_count": 0,
         "tool_calls": 1,
         "error": null
       },
       "bl_cocoindex": {
-        "latency_ms": 60.211,
-        "token_count": 607,
+        "latency_ms": 54.741,
+        "token_count": 124,
         "tool_calls": 1,
         "error": null
       },
@@ -408,7 +408,7 @@
       "task_id": "D_token_comparison_medium",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 0.995,
+        "latency_ms": 1.129,
         "token_count": 127,
         "tool_calls": 1,
         "error": null
@@ -420,14 +420,14 @@
         "error": null
       },
       "bl_serena": {
-        "latency_ms": 1207.568,
+        "latency_ms": 1277.102,
         "token_count": 0,
         "tool_calls": 1,
         "error": null
       },
       "bl_cocoindex": {
-        "latency_ms": 54.84,
-        "token_count": 849,
+        "latency_ms": 53.114,
+        "token_count": 169,
         "tool_calls": 1,
         "error": null
       },
@@ -438,7 +438,7 @@
       "task_id": "D_token_comparison_large",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 0.884,
+        "latency_ms": 1.128,
         "token_count": 165,
         "tool_calls": 1,
         "error": null
@@ -450,14 +450,14 @@
         "error": null
       },
       "bl_serena": {
-        "latency_ms": 1192.57,
+        "latency_ms": 1282.879,
         "token_count": 977,
         "tool_calls": 1,
         "error": null
       },
       "bl_cocoindex": {
-        "latency_ms": 42.433,
-        "token_count": 836,
+        "latency_ms": 56.624,
+        "token_count": 116,
         "tool_calls": 1,
         "error": null
       },
@@ -468,7 +468,7 @@
       "task_id": "D_token_comparison_large",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 0.893,
+        "latency_ms": 0.88,
         "token_count": 1,
         "tool_calls": 1,
         "error": null
@@ -480,14 +480,14 @@
         "error": null
       },
       "bl_serena": {
-        "latency_ms": 1286.899,
+        "latency_ms": 1278.71,
         "token_count": 0,
         "tool_calls": 1,
         "error": null
       },
       "bl_cocoindex": {
-        "latency_ms": 56.349,
-        "token_count": 628,
+        "latency_ms": 53.588,
+        "token_count": 170,
         "tool_calls": 1,
         "error": null
       },
@@ -498,7 +498,7 @@
       "task_id": "D_token_comparison_large",
       "corpus_id": "sample",
       "prism": {
-        "latency_ms": 0.963,
+        "latency_ms": 1.047,
         "token_count": 1,
         "tool_calls": 1,
         "error": null
@@ -510,14 +510,14 @@
         "error": null
       },
       "bl_serena": {
-        "latency_ms": 1211.364,
+        "latency_ms": 1269.614,
         "token_count": 0,
         "tool_calls": 1,
         "error": null
       },
       "bl_cocoindex": {
-        "latency_ms": 70.452,
-        "token_count": 571,
+        "latency_ms": 55.788,
+        "token_count": 169,
         "tool_calls": 1,
         "error": null
       },

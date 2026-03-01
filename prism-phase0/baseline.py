@@ -809,7 +809,9 @@ def bl_c_cocoindex(
         result.latency_ms = (time.perf_counter() - t0) * 1000
 
         result.top_k_results = hits
-        # Primary result = top-1 hit
+        # Primary result = top-1 hit (highest cosine similarity)
+        # Token count uses top-1 only — this mirrors actual cocoindex usage where
+        # the agent receives the single best-matching chunk, not all top-k results.
         top = hits[0]
         result.file = top.get("filename", "")
         result.snippet_start_line = top.get("start_line", 0)
@@ -817,10 +819,9 @@ def bl_c_cocoindex(
         # symbol_* mirrors snippet_* in real mode (cocoindex returns chunk ranges)
         result.symbol_start_line = result.snippet_start_line
         result.symbol_end_line = result.snippet_end_line
-        # Concatenate all top-k chunks so token count is comparable to fallback
-        all_code = "\n\n---\n\n".join(h.get("code", "") for h in hits)
-        result.snippet_text = all_code
-        result.token_count = count_tokens(all_code)
+        top_code = top.get("code", "")
+        result.snippet_text = top_code
+        result.token_count = count_tokens(top_code)
 
     except Exception as exc:
         # Real mode failed — fall back transparently and record warning
