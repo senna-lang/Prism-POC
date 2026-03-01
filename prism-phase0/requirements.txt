@@ -13,10 +13,29 @@ tiktoken==0.8.0
 # SQLite is bundled with Python std-lib (no extra package needed)
 
 # CLI utility
-click==8.1.8
+click>=8.1.8
 
 # Rich terminal output (benchmark report)
-rich==13.9.4
+rich>=13.9.4
 
 # Type hints backport
-typing-extensions==4.12.2
+typing-extensions>=4.12.2
+
+# ---------------------------------------------------------------------------
+# CocoIndex — semantic code indexing (BL-C real mode)
+# ---------------------------------------------------------------------------
+cocoindex>=0.3.34
+
+# Embedding model (local, no API key needed)
+sentence-transformers>=3.0
+
+# PostgreSQL driver + pgvector support
+psycopg[binary]>=3.3
+psycopg-pool>=3.3
+pgvector>=0.4.0
+
+# Numpy (required by sentence-transformers + cocoindex embeddings)
+numpy>=1.26
+
+# .env file loading
+python-dotenv>=1.0
