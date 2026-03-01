@@ -2,11 +2,12 @@
 id: t-372fe5
 date: 2026-02-28T23:04:36.968183+09:00
 title: 'Phase 0: fastapi / express コーパス取得 + 3コーパスで計測実行'
-status: open
+status: done
 priority: high
 session: ""
 tags: []
 assignee: ""
+completed_at: 2026-03-01T13:30:50.552137+09:00
 ---
 
 ## What
