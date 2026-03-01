@@ -2,11 +2,12 @@
 id: t-2ae8cd
 date: 2026-02-28T23:04:46.036437+09:00
 title: 'Phase 0: 結果分析 + Go/No-Go 判定レポート作成（Phase 0 完了レポート）'
-status: open
+status: done
 priority: high
 session: ""
 tags: []
 assignee: ""
+completed_at: 2026-03-01T13:25:29.747575+09:00
 ---
 
 ## What
