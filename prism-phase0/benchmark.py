@@ -35,7 +35,7 @@ import click
 # Local imports
 # ---------------------------------------------------------------------------
 try:
-    from baseline import bl_a_grep, bl_b_serena, bl_c_cocoindex
+    from baseline import bl_a_grep, bl_b_serena, bl_c_cocoindex  # noqa: E402
     from indexer import build_index, open_db
     from search import explore, trace
 except ImportError as exc:
@@ -263,6 +263,7 @@ def run_task_a(
     symbol: str,
     corpus_path: Path,
     db_path: Path,
+    real: bool = False,
 ) -> TaskResult:
     tr = TaskResult(task_id="A_symbol_lookup", corpus_id=corpus_path.name)
 
@@ -283,7 +284,7 @@ def run_task_a(
         tr.bl_grep.token_count = bl_a.token_count
 
     # BL-B: Serena
-    bl_b, lat, err = _safe_call(bl_b_serena, symbol, corpus_path)
+    bl_b, lat, err = _safe_call(bl_b_serena, symbol, corpus_path, real=real)
     tr.bl_serena.latency_ms = lat
     tr.bl_serena.tool_calls = 1
     tr.bl_serena.error = err
@@ -291,7 +292,7 @@ def run_task_a(
         tr.bl_serena.token_count = bl_b.token_count
 
     # BL-C: cocoindex
-    bl_c, lat, err = _safe_call(bl_c_cocoindex, symbol, corpus_path)
+    bl_c, lat, err = _safe_call(bl_c_cocoindex, symbol, corpus_path, real=real)
     tr.bl_cocoindex.latency_ms = lat
     tr.bl_cocoindex.tool_calls = 1
     tr.bl_cocoindex.error = err
@@ -309,6 +310,7 @@ def run_task_b(
     symbol: str,
     corpus_path: Path,
     db_path: Path,
+    real: bool = False,
 ) -> TaskResult:
     tr = TaskResult(task_id="B_impact_analysis", corpus_id=corpus_path.name)
 
@@ -332,7 +334,9 @@ def run_task_b(
         extra_latency = 0.0
         extra_tokens = bl_a.token_count
         for mf in match_files:
-            bl_b_r, extra_lat, _ = _safe_call(bl_b_serena, symbol, Path(mf).parent)
+            bl_b_r, extra_lat, _ = _safe_call(
+                bl_b_serena, symbol, Path(mf).parent, real=real
+            )
             extra_latency += extra_lat
             if bl_b_r is not None:
                 extra_tokens += bl_b_r.token_count
@@ -352,6 +356,7 @@ def run_task_c(
     query: str,
     corpus_path: Path,
     db_path: Path,
+    real: bool = False,
 ) -> TaskResult:
     tr = TaskResult(task_id="C_concept_search", corpus_id=corpus_path.name)
 
@@ -398,6 +403,7 @@ def run_task_d_symbol(
     corpus_path: Path,
     db_path: Path,
     size_label: str = "unknown",
+    real: bool = False,
 ) -> TaskResult:
     tr = TaskResult(
         task_id=f"D_token_comparison_{size_label}",
@@ -413,7 +419,7 @@ def run_task_d_symbol(
         tr.prism.token_count = _prism_explore_tokens(results, top_n=1)
 
     # BL-B: Serena — full source text
-    bl_b, lat, err = _safe_call(bl_b_serena, symbol, corpus_path)
+    bl_b, lat, err = _safe_call(bl_b_serena, symbol, corpus_path, real=real)
     tr.bl_serena.latency_ms = lat
     tr.bl_serena.tool_calls = 1
     tr.bl_serena.error = err
@@ -421,7 +427,7 @@ def run_task_d_symbol(
         tr.bl_serena.token_count = bl_b.token_count
 
     # BL-C: cocoindex — ±30-line snippet
-    bl_c, lat, err = _safe_call(bl_c_cocoindex, symbol, corpus_path)
+    bl_c, lat, err = _safe_call(bl_c_cocoindex, symbol, corpus_path, real=real)
     tr.bl_cocoindex.latency_ms = lat
     tr.bl_cocoindex.tool_calls = 1
     tr.bl_cocoindex.error = err
@@ -462,6 +468,7 @@ def run_benchmark(
     db_dir: Path,
     results_path: Path,
     force_reindex: bool = False,
+    real: bool = False,
 ) -> BenchmarkResults:
     from datetime import datetime, timezone
 
@@ -513,7 +520,7 @@ def run_benchmark(
         # ---- Task A ---------------------------------------------------------
         click.echo("  Running Task A (symbol lookup)...")
         for sym in ["handleLogin", "validate_token", "AuthService"]:
-            tr = run_task_a(sym, corpus_path, db_path)
+            tr = run_task_a(sym, corpus_path, db_path, real=real)
             results.tasks.append(tr.to_dict())
             click.echo(
                 f"    A/{sym}: prism={tr.prism.token_count}tok  "
@@ -524,7 +531,7 @@ def run_benchmark(
         # ---- Task B ---------------------------------------------------------
         click.echo("  Running Task B (impact analysis)...")
         for sym in ["validateToken", "validate_token"]:
-            tr = run_task_b(sym, corpus_path, db_path)
+            tr = run_task_b(sym, corpus_path, db_path, real=real)
             results.tasks.append(tr.to_dict())
             click.echo(
                 f"    B/{sym}: prism_calls={tr.prism.tool_calls}  "
@@ -535,7 +542,7 @@ def run_benchmark(
         # ---- Task C ---------------------------------------------------------
         click.echo("  Running Task C (concept search)...")
         for query in ["auth error handling", "authentication error", "login failure"]:
-            tr = run_task_c(query, corpus_path, db_path)
+            tr = run_task_c(query, corpus_path, db_path, real=real)
             results.tasks.append(tr.to_dict())
             click.echo(
                 f"    C/{query!r}: prism_calls={tr.prism.tool_calls}  "
@@ -551,7 +558,9 @@ def run_benchmark(
         }
         for size, syms in task_d_symbols.items():
             for sym in syms:
-                tr = run_task_d_symbol(sym, corpus_path, db_path, size_label=size)
+                tr = run_task_d_symbol(
+                    sym, corpus_path, db_path, size_label=size, real=real
+                )
                 results.tasks.append(tr.to_dict())
                 click.echo(
                     f"    D/{size}/{sym}: "
@@ -575,7 +584,11 @@ def run_benchmark(
 
 @click.group()
 def cli() -> None:
-    """Prism Phase 0 — benchmark harness."""
+    """Prism Phase 0 — benchmark harness.
+
+    Use --real to call actual Serena (MCP stdio) and cocoindex (vector search)
+    instead of the built-in tree-sitter simulators.
+    """
 
 
 @cli.command("run")
@@ -614,20 +627,34 @@ def cli() -> None:
     default=False,
     help="Force full re-index even if checksums match.",
 )
+@click.option(
+    "--real",
+    is_flag=True,
+    default=False,
+    help=(
+        "Use real Serena MCP server (BL-B) and real cocoindex vector search (BL-C) "
+        "instead of the built-in tree-sitter simulators. "
+        "Falls back transparently on any error."
+    ),
+)
 def cmd_run(
     corpus_ids: tuple[str, ...],
     root_base: Path,
     db_dir: Path,
     output: Path,
     force_reindex: bool,
+    real: bool,
 ) -> None:
     """Run the full benchmark suite."""
+    if real:
+        click.echo("⚡ Real mode: BL-B → Serena MCP, BL-C → cocoindex vector search")
     run_benchmark(
         corpus_ids=list(corpus_ids),
         base_dir=root_base,
         db_dir=db_dir,
         results_path=output,
         force_reindex=force_reindex,
+        real=real,
     )
 
 
